@@ -1,4 +1,3 @@
-
 #include <stdio.h>
 #include <string.h>
 
@@ -8,7 +7,7 @@
 int main() {
     char est[5][26];
     char mat[3][26];
-    float notas[3], promes[5] = {0}, promt[3] = {0}, max[3] = {0}, min[3] = {10};
+    float notas[3], promes[5] = {0}, promt[3] = {0}, max[3] = {0}, min[3] = {10,10,10};
     int rep[3] = {0}, apro[3] = {0};
 
     // ingreso de materias
@@ -16,7 +15,7 @@ int main() {
         printf("¿Cuál es la %d materia? ", r + 1);
         fgets(mat[r], 26, stdin);
         mat[r][strcspn(mat[r], "\n")] = 0;  // eliminar las lineas de los caracteres
-
+    }
     // ingreso de los nombres de los estudiantes y las notas
     for (int i = 0; i < 5; i++) {
         printf("¿Cuál es el nombre del estudiante? \n");
@@ -26,7 +25,8 @@ int main() {
         for (int j = 0; j < 3; j++) {
             do {
                 printf("¿Cuál es la nota en la materia %s? ", mat[j]);
-                while (scanf("%f", &notas[j]) != 1) {
+                scanf("%f", &notas[j]);
+                if (notas[j] < 0  ||notas[j] > 10 ) {
                     printf("Entrada inválida. Por favor, ingrese un número.\n");
                     while (getchar() != '\n');  // limpia el invalido inngreso de datos
                 }
@@ -83,5 +83,4 @@ int main() {
     }
 
     return 0;  // se regresa el valor de cero para la correcta ejecuciom del problema
-}
 }
