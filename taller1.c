@@ -7,7 +7,7 @@
 int main() {
     char est[5][26];
     char mat[3][26];
-    float notas[3], promes[5] = {0}, promt[3] = {0}, max[3] = {0}, min[3] = {10,10,10};
+    float notas[3], promes[5] = {0}, promt[3] = {0}, max[3] = {0}, min[3] = {10,10,10},maxi[3] = {0}, mini[3] = {10,10,10};
     int rep[3] = {0}, apro[3] = {0};
 
     // ingreso de materias
@@ -42,7 +42,12 @@ int main() {
             if (notas[j] < min[j]) {
                 min[j] = notas[j];
             }
-
+            if (notas[j] > maxi[i]) {
+                maxi[i] = notas[j];
+            }
+            if (notas[j] < mini[i]) {
+                mini[i] = notas[j];
+            }
             // calcula la suma de los promedios
             promt[j] += notas[j];
             promes[i] += notas[j];
@@ -70,6 +75,8 @@ int main() {
     for (int o = 0; o < 5; o++) {
         printf("----------------------------------RESULTADO--------------------------------------\n");
         printf("El promedio de las notas del estudiante %s es de: %.2f\n", est[o], promes[o]);
+        printf("La calificación más alta del estudiante %s es de: %.2f\n", est[o], maxi[o]);
+        printf("La calificación más baja del estudiante %s es de: %.2f\n", est[o], mini[o]);
         printf("------------------------------------------------------------------------------\n");
     }
 
